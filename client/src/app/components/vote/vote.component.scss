@@ -1,0 +1,75 @@
+.wrapper{
+    @apply h-full flex flex-col;
+}
+
+.content-wrapper{
+    @apply w-full h-full px-[15%] py-5;
+}
+.content{
+    @apply flex flex-col rounded-lg overflow-hidden shadow-lg w-full min-h-full mb-5;
+
+    .header{
+        @apply flex bg-green-800 justify-center text-teal-50 text-2xl h-12 items-center
+            shadow-lg
+        ;
+        font-family: 'Protest Strike', sans-serif;
+    }
+
+    .vote-wrapper{
+        @apply flex flex-grow flex-col w-full p-6 gap-10;
+        
+    }
+}
+
+.people-grid{
+    @apply grid px-48;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    column-gap: 100px;
+    row-gap: 50px;
+
+    .selected {
+        @apply bg-green-700 text-white;
+    }
+}
+
+.people-portrait{
+    @apply flex flex-col items-center rounded-lg p-2 shadow-lg justify-center;
+    word-break: break-all;
+}
+
+
+
+img{
+    @apply w-[120px] h-auto;
+}
+
+.main-header{
+    position: sticky;
+    top: 0;
+    z-index: 50
+}
+
+h2{
+    @apply font-bold text-xl;
+    font-family: 'Protest Strike', sans-serif;  
+}
+
+button{
+    @apply bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 
+        rounded-md shadow-md transition duration-300 ease-in-out
+        disabled:bg-green-200 disabled:cursor-not-allowed disabled:hover:bg-green-300
+    ;
+}
+
+.end-wrapper{
+    @apply flex flex-col gap-5 m-auto;
+
+    h2{
+        @apply flex-grow;
+    }
+}
+
+h3{
+    @apply text-center;
+    word-break: break-word;
+}

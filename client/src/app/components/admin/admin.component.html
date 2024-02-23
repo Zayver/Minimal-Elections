@@ -1,0 +1,41 @@
+<div class="wrapper">
+    <elections-header class="main-header"></elections-header>
+    <div class="content-wrapper">
+        <div class="content">
+            <div class="header">
+                <h1>Admin del sistema</h1>
+            </div>
+            <div class="admin-wrapper">
+                <button (click)="showResults()">Ver resultados</button>
+                <h2>Votos personero</h2>
+                <div class="people-grid">
+                    @for (person of resultP; track $index) {
+                            <div class="people-portrait">
+                                <img src={{person.idCandidate.imgUrl}} alt={{person.idCandidate.name}}>
+                                <h3>{{person.idCandidate.name}}</h3>
+                                <h3 class="vote-text" [class.hide]="!this.seeResults">Votos: {{person.voteCount}}</h3>
+                            </div>
+                    }
+                    @empty {
+                        <h1>VACIO</h1>
+                    }
+                </div>
+                <h2>Votos representante</h2>
+                <div class="people-grid">
+                    @for (person of resultR; track $index) {
+                        <div class="people-portrait">
+                            <img src={{person.idCandidate.imgUrl}} alt={{person.idCandidate.name}}>
+                            <h3>{{person.idCandidate.name}}</h3>
+                            <h3 class="vote-text" [class.hide]="!this.seeResults">Votos: {{person.voteCount}}</h3>
+                        </div>
+                    }
+                    @empty {
+                        <h1>VACIO</h1>
+                    }
+                </div>
+                <button (click)="refresh()">Actualizar</button>
+
+            </div>
+        </div>
+    </div>
+</div>

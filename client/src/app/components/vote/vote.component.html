@@ -1,0 +1,56 @@
+<div class="wrapper">
+    <elections-header class="main-header"></elections-header>
+    <div class="content-wrapper">
+        <div class="content">
+            <div class="header">
+                <h1>Bienvenido</h1>
+            </div>
+            @if (!sended) {
+                <div class="vote-wrapper">
+                    <h2>Vota por personero</h2>
+                    <div class="people-grid">
+                        @for (person of candidatesP; track $index) {
+                            <div class="people-portrait" [class.selected]="$index === vote.personero-1"
+                                (click)="selectP($index)"
+                                >
+                                <img src={{person.imgUrl}} alt={{person.name}}>
+                                <h3>{{person.name}}</h3>
+                            </div>
+                        }
+                        @empty {
+                            <h1>VACIO</h1>
+                        }
+                    </div>
+    
+                    <h2>Vota por contralor</h2>
+                    <div class="people-grid">
+                        @for (person of candidatesR; track $index) {
+                            <div class="people-portrait" [class.selected]="$index === vote.representative-1"
+                                (click)="selectR($index)"
+                                >
+                                <img src={{person.imgUrl}} alt={{person.name}}>
+                                <h3>{{person.name}}</h3>
+                            </div>
+                        }
+                        @empty {
+                            <h1>VACIO</h1>
+                        }
+                    </div>
+    
+                    <button [disabled]="(this.vote.personero === -1 || this.vote.representative === -1) && !sended"
+                        (click)="sendVote()"> Enviar </button>
+    
+                </div>
+            }@else {
+                <div class="end-wrapper">
+                    <h2>¡Gracias por tu voto!</h2>
+                    <button (click)="reset()" [disabled]="!canSendAnotherVote"> Enviar otro voto 
+                        @if (!canSendAnotherVote) {
+                            ({{timeLeft}})
+                        }
+                    </button>
+                </div>
+            }
+        </div>
+    </div>
+</div>
